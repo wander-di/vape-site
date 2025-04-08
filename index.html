@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гид по вейпам и табаку</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+    header {
+      background-color: #3c3f41;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    #password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+    #content {
+      display: none;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    nav button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #3c3f41;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    nav button:hover {
+      background-color: #5a5d60;
+    }
+    section {
+      display: none;
+      padding: 1rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      white-space: pre-line;
+    }
+    .flavor-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .flavor-buttons button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #3c3f41;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .flavor-buttons button:hover {
+      background-color: #5a5d60;
+    }
+    .flavor-text {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="password-screen">
+    <h2>Введите пароль для доступа</h2>
+    <input type="password" id="password" placeholder="Пароль...">
+    <button onclick="checkPassword()">Войти</button>
+    <p id="error-message" style="color: red; display: none;">Неверный пароль</p>
+  </div>
+
+  <div id="content">
+    <header>
+      <h1>Гид по вейпам и табаку</h1>
+    </header>
+    <nav>
+      <h2 class="editable"><button onclick="showSection('liquid')">Жидкость</button></h2>
+      <h2 class="editable"><button onclick="showFlavors()">Вкусовые линейки жидкости</button></h2>
+      <h2 class="editable"><button onclick="showSection('devices')">Устройства</button></h2>
+      <h2 class="editable"><button onclick="showSection('disposable')">Одноразовые</button></h2>
+      <h2 class="editable"><button onclick="showSection('reusable')">Многоразовые</button></h2>
+      <h2 class="editable"><button onclick="showSection('mods')">Моды</button></h2>
+      <h2 class="editable"><button onclick="showSection('atomizers')">Атомайзеры</button></h2>
+      <h2 class="editable"><button onclick="showSection('consumables')">Расходники</button></h2>
+      <h2 class="editable"><button onclick="showSection('important')">ВАЖНО</button></h2>
+      <h2 class="editable"><button onclick="showSection('hookahs')">Кальяны</button></h2>
+      <h2 class="editable"><button onclick="showSection('bowls')">Чаши</button></h2>
+      <h2 class="editable"><button onclick="showSection('mixes')">Смеси и угли</button></h2>
+      <h2 class="editable"><button onclick="showSection('tobacco')">Табак</button></h2>
+      <h2 class="editable"><button onclick="showSection('pipes')">Трубки и самокрутки</button></h2>
+      <h2 class="editable"><button onclick="showSection('cigars')">Сигары и сигариллы</button></h2>
+    </nav>
+
+    <section id="liquid" class="active">
+  <h2>Жидкость</h2>
+  <h2 class="editable">Общая информация</p>
+    </section>
+    <section id="devices">
+      <h2 class="editable"><h2>Устройства</h2>
+      <h2 class="editable"><p><strong><p><p><strong>Одноразовые устройства</strong></h2>
+</p>
+    </section>
+    <section id="disposable">
+      <h2 class="editable"><h2>Одноразовые устройства</h2>
+      <h2 class="editable"><p>Устройства, не подлежащие заправке...</p>
+    </section>
+    <section id="reusable">
+      <h2 class="editable"><h2>Многоразовые устройства</h2>
+      <h2 class="editable"><p>Устройства с возможностью заправки...</p>
+    </section>
+    <section id="mods">
+      <h2 class="editable"><h2>Моды</h2>
+      <h2 class="editable"><p>Описание модов, для продвинутых пользователей...</p>
+    </section>
+    <section id="atomizers">
+      <h2 class="editable"><h2>Виды атомайзеров</h2>
+      <h2 class="editable"><p>RDA, RTA и другие виды...</p>
+    </section>
+    <section id="consumables">
+      <h2 class="editable"><h2>Расходники</h2>
+      <h2 class="editable"><p>О хлопке, койлах, сетках...</p>
+    </section>
+    <section id="important">
+      <h2 class="editable"><h2>ВАЖНАЯ ИНФОРМАЦИЯ</h2>
+      <h2 class="editable"><p>Важные советы и правила безопасности...</p>
+    </section>
+    <section id="hookahs">
+      <h2 class="editable"><h2>Кальяны и комплектующие</h2>
+      <h2 class="editable"><p>Коротко об устройстве кальяна, шлангах, колбах...</p>
+    </section>
+    <section id="bowls">
+      <h2 class="editable"><h2>Чаши и формы чаш</h2>
+      <h2 class="editable"><p>Формы чаш: турка, классика, фанел...</p>
+    </section>
+    <section id="mixes">
+      <h2 class="editable"><h2>Смеси и угли</h2>
+      <h2 class="editable"><p>Разновидности табачных и бестабачных смесей, типы угля...</p>
+    </section>
+    <section id="tobacco">
+      <h2 class="editable"><h2>Всё о табаках</h2>
+      <h2 class="editable"><p>Сорта, крепость, нарезка и их особенности...</p>
+    </section>
+    <section id="pipes">
+      <h2 class="editable"><h2>Трубки и самокрутки</h2>
+      <h2 class="editable"><p>Разновидности трубок, материалы, мундштуки, бумага...</p>
+    </section>
+    <section id="cigars">
+      <h2 class="editable"><h2>Сигары и сигариллы</h2>
+      <h2 class="editable"><p>Виды, особенности, отличия от сигарет...</p>
+    </section>
+    <section id="flavors" style="display: none;">
+      <h2 class="editable"><h2>Вкусовые линейки жидкости</h2>
+      <div class="flavor-buttons">
+        <h2 class="editable"><button onclick="showFlavor('maxwells')">Maxwells</button></h2>
+        <h2 class="editable"><button onclick="showFlavor('smokeKitchen')">Smoke Kitchen</button></h2>
+        <h2 class="editable"><button onclick="showFlavor('Content')">Content</button></h2>
+        <h2 class="editable"><button onclick="showFlavor('Siberian и Scandalist')">Siberian и Scandalist</button></h2>
+        <h2 class="editable"><button onclick="showFlavor('Табачные жидкости')">Табачные жидкости</button></h2>
+      </div>
+    </section>
+    <section id="maxwells" style="display: none;" class="flavor-text">
+      <h2>Maxwells</h2>
+      <p> <ul>
+    <h2 class="editable"><p><p><strong>Pink</strong> – Малиновый лимонад</li></h2>
+    <h2 class="editable"><p><p><strong>Shoria</strong> – Хвоя, мята, лесные ягоды</li></h2>
+    <h2 class="editable"><p><p><strong>Shoria Summer</strong> – Мятный ананасовый джем</li></h2>
+    <h2 class="editable"><p><p><strong>Pops</strong> – Жвачка киви и яблоко</li></h2>
+    <h2 class="editable"><p><p><strong>Black</strong> – Терпкий табак</li></h2>
+    <h2 class="editable"><p><p><strong>Rich</strong> – Дыня, арбуз и клубничный джем</li></h2>
+    <h2 class="editable"><p><p><strong>Altay</strong> – Черный чай со смородиновым вареньем</li></h2>
+    <h2 class="editable"><p><p><strong>Blue</strong> – Черника, голубика, ежевика с холодком<</li></h2>
+    <h2 class="editable"><p><p><strong>Arizona</strong> – Клубника, огурец, базилик</li></h2>
+    <h2 class="editable"><p><p><strong>Mojito</strong> – Освежающий мохито</li></h2>
+    <h2 class="editable"><p><p><strong>Chill</strong> – Прохладный арбузный лимонад</button></li></h2>
+    <h2 class="editable"><p><p><strong>Jelly</strong> – Ягодный мармелад</button></li></h2>
+    <h2 class="editable"><p><p><strong>Vera</strong> – Огуречный лимонад с алоэ вера</li></h2>
+    <h2 class="editable"><p><p><strong>Red</strong> – Ядерная клубника</li></h2>
+    <h2 class="editable"><p><p><strong>Apple Pie</strong> – Шарлотка с нотками корицы</li></h2>
+    <h2 class="editable"><p><p><strong>Cherry Punch</strong> – Пунш из вишни</li></h2>
+    <h2 class="editable"><p><p><strong>Lemon Cake</strong> – Лимонный чизкейк</li></h2>
+    <h2 class="editable"><p><p><strong>Mango</strong> – Тропический манго</li></h2>
+    <h2 class="editable"><p><p><strong>Tundra</strong> – Можжевельник, мята, рябина</li></h2>
+    <h2 class="editable"><p><p><strong>Split</strong> – Банан, кокос</li></h2>
+    <h2 class="editable"><p><p><strong>Tropic</strong> – Ананас, киви, манго</li></h2>
+    <h2 class="editable"><p><p><strong>Green</strong> – Зеленое яблоко</li></h2>
+    <h2 class="editable"><p><p><strong>Baikal</strong> – Травянистая кола</li></h2>
+    <h2 class="editable"><p><p><strong>India</strong> – Зеленый чай с лесными ягодами</li></h2>
+  </ul></p>
+    </section>
+    <section id="smokeKitchen" style="display: none;" class="flavor-text">
+      <h2 class="editable"><h2 class="editable"><h2>Smoke Kitchen</h2>
+      <h2 class="editable"><p><h4>TRIX:</h4>
+  <h2 class="editable"><p><strong>Соль</strong>: 20мг, 20Ultra.</p>
+  <h2 class="editable"><p><strong>Щелочь</strong>: 0мг, 3мг.</p>
+  <ul>
+    <h2 class="editable"><p><p><strong>CIDER</strong> – Грушевый сидр</li></h2>
+    <h2 class="editable"><p><p><strong>PANCAKE</strong> – Блины с медом</li></h2>
+    <h2 class="editable"><p><p><strong>CITRUS</strong> – Табак с цитрусами</li></h2>
+    <h2 class="editable"><p><p><strong>CREAMY CLOUDS</strong> – Сливочный мандарин с ванилью</li></h2>
+    <h2 class="editable"><p><p><strong>TRIX.WORLD</strong> – Ягодный сорбет, цитрусы</li></h2>
+    <h2 class="editable"><p><p><strong>GLINTWINE</strong> – Глинтвейн со специями</li></h2>
+    <h2 class="editable"><p><p><strong>ALASKA BEAR</strong> – Табак, орех</li></h2>
+  </ul></p>
+    </section>
+    <section id="Content" style="display: none;" class="flavor-text">
+      <h2 class="editable"><h2 class="editable"><h2>Content</h2>
+      <h2 class="editable"><p><p><strong>Соль</strong>: 20мг, 20Ultra.</p>
+  <ul>
+    <h2 class="editable"><p><p><strong>XXX-FILES</strong> – Гуава, малина</li></p>
+    <h2 class="editable"><p><p><strong>WHITE MIRROR</strong> – Ягодные леденцы с анисом и ментолом</li></p>
+    <h2 class="editable"><p><p><strong>REDRUM</strong> – Гранат, малина и черная смородина</li></p>
+    <h2 class="editable"><p><p><strong>Q-THEORY</strong> – Вишня, черная смородина</li></p>
+    <h2 class="editable"><p><p><strong>OOH WEE FORMULA</strong> – Груша, крем-сода</li></p>
+    <h2 class="editable"><p><p><strong>LET’S ROCK</strong> – Цитрусовый лимонад с ягодами</li></p>
+    <h2 class="editable"><p><p><strong>FROOPYLAND ADVENTURE</strong> – Фрукты, абсент, ментол</li></p>
+    <h2 class="editable"><p><p><strong>DR.WOW</strong> – Йогурт с манго и индийскими прянностями</li></p>
+  </ul></p>
+    </section>
+    <section id="Siberian и Scandalist" style="display: none;" class="flavor-text">
+      <h2 class="editable"><h2 class="editable"><h2>Siberian и Scandalist</h2>
+      <h2 class="editable"><p><p><strong>Siberian</strong></h2>
+Соль: 20мг, 20Ultra
+	<h2 class="editable"><p><p><strong>Woodman’s Pipe</strong> –табак, орех</li></h2>
+	<h2 class="editable"><p><p><strong>Wild Berry</strong> –лесные ягоды с можжевельником и хвоей</li></h2>
+	<h2 class="editable"><p><p><strong>Pine Nut Cake</strong> –кедровый кекс</li></h2>
+	<h2 class="editable"><p><p><strong>Mountain Taiga</strong> –черная смородина, хвоя</li></h2>
+	<h2 class="editable"><p><p><strong>Dog Rose & Fruits</strong> –фрукты с шиповником</li></h2>
+
+<h2 class="editable"><h2 class="editable"><p><p><strong>Scandalist</strong></h2>
+Жидкость имеет более 20 вкусов.
+Соль: 20мг (имеет выраженный ТХ, курится крепче)
+Щелочь: 3мг, 60мл.
+	<h2 class="editable"><p><p><strong>MANTRA Tropical Smoothie</strong> – манго, питайя (драгон фрукт), клубника, цитрус</li></h2>
+	<h2 class="editable"><p><p><strong>Doomsday Machine Tropical Apocalypse</strong> – гуава, маракуйя, цитрусы</li></h2>
+	<h2 class="editable"><p><p><strong>Boy Oh Boy Bloody Red Bubblegum</strong> – жвачка клубника, малина</li></h2>
+	<h2 class="editable"><p><p><strong>EX’s Heart Juice Bubblegum</strong> – жвачка киви, малина</li></h2>
+	<h2 class="editable"><p><p><strong>Wolf Cabin Taiga Juice</strong> – Брусника, смородина, хвоя</li></h2>
+	<h2 class="editable"><p><p><strong>Фьюжн</strong> – клубника, маракуйя, киви</li></h2>
+</p>
+    </section>
+    <section id="Табачные жидкости" style="display: none;" class="flavor-text">
+      <h2 class="editable"><h2>Табачные жидкости</h2>
+      <p><p><strong>Barrel</strong>
+Соль: 20мг, 20strong
+Щелочь: 6мг, 12мг – 60мл. 50/50
+	<h2 class="editable"><p><p><p><strong>BLOODYCHERRR</strong> –вишня;</h2>
+	<h2 class="editable"><p><p><p><strong>PIRATE SUGAR</strong> – карамель;</h2>
+	<h2 class="editable"><p><p><p><strong>MR. DAMSON</strong> – чернослив;</h2>
+	<h2 class="editable"><p><p><p><strong>RICH BLEND</strong> – ром.</h2>
+
+<p><p><strong>Tradewinds Tobacco</strong>
+Соль: 20мг, 20ice.
+Щелочь: 3мг, 6мг, 12мг – 60мл. 50/50
+	<h2 class="editable"><p><p><strong>Cameroon</strong> – корица;</h2>
+	<h2 class="editable"><p><p><strong>Carolina</strong> – крепкий трубочный;</h2>
+	<h2 class="editable"><p><p><strong>Carolina Cool</strong> – Ментол и мята;</h2>
+	<h2 class="editable"><p><p><strong>Havana</strong> – кубинская сигара;</h2>
+	<h2 class="editable"><p><p><strong>Laplandia</strong> – шоколад, карамель;</h2>
+	<h2 class="editable"><p><p><strong>Scandinavian Cured</strong> – мед;</h2>
+	<h2 class="editable"><p><p><strong>Turkish</strong> – дубовая кора;</h2>
+	<h2 class="editable"><p><p><strong>Tuscan Grape</strong> – виноград;</h2>
+	<h2 class="editable"><p><p><strong>Kentucky</strong> – натуральный;</h2>
+	<h2 class="editable"><p><p><strong>Texas</strong> – крепкий;</h2>
+	<h2 class="editable"><p><p><strong>Tennessee</strong> – кофе.</h2>
+</p>
+    </section>
+  </div>
+
+  <script>
+    const correctPassword = "valera123";
+
+    function checkPassword() {
+      const entered = document.getElementById('password').value;
+      if (entered === correctPassword) {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        document.getElementById('error-message').style.display = 'block';
+      }
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function showFlavors() {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById('flavors').style.display = 'block';
+    }
+
+    function showFlavor(id) {
+      document.querySelectorAll('.flavor-text').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+<style>
+  .admin-btn {
+    position: fixed; top: 20px; right: 20px;
+    background: #222; color: #fff; padding: 10px 16px;
+    border: none; border-radius: 6px; cursor: pointer;
+    z-index: 1000; font-weight: bold;
+  }
+  .modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: flex; align-items: center;
+    justify-content: center; z-index: 2000;
+  }
+  .modal-content {
+    background: white; padding: 20px; border-radius: 10px;
+    text-align: center;
+  }
+  .modal-content input {
+    padding: 10px; width: 80%; margin-bottom: 10px;
+  }
+  .modal-content button {
+    padding: 10px 20px; background: #28a745;
+    color: white; border: none; border-radius: 6px;
+    cursor: pointer;
+  }
+  .editable {
+    border: 1px dashed transparent;
+    padding: 5px;
+  }
+  .editable[contenteditable="true"] {
+    border: 1px dashed #888;
+    background: #fff8dc;
+  }
+</style>
+
+<button class="admin-btn" onclick="showAdminLogin()">АДМИН</button>
+
+<div class="modal" id="adminModal" style="display: none;">
+  <div class="modal-content">
+    <h3>🔐 Вход администратора</h3>
+    <input type="password" id="adminPass" placeholder="Введите пароль"/>
+    <br/>
+    <button onclick="checkAdmin()">Войти</button>
+    <div id="adminError" style="color:red; margin-top:10px;"></div>
+  </div>
+</div>
+
+<script>
+  const ADMIN_PASSWORD = "admin123";
+  let isAdmin = false;
+
+  function showAdminLogin() {
+    document.getElementById("adminModal").style.display = "flex";
+  }
+
+  function checkAdmin() {
+    const pass = document.getElementById("adminPass").value;
+    if (pass === ADMIN_PASSWORD) {
+      isAdmin = true;
+      document.getElementById("adminModal").style.display = "none";
+      enableEditing();
+    } else {
+      document.getElementById("adminError").textContent = "Неверный пароль!";
+    }
+  }
+
+  function enableEditing() {
+    document.querySelectorAll(".editable").forEach(el => {
+      el.setAttribute("contenteditable", "true");
+    });
+
+    const saveBtn = document.createElement("button");
+    saveBtn.innerText = "Сохранить";
+    saveBtn.style.cssText = "position:fixed;bottom:20px;right:20px;padding:10px;background:#007bff;color:white;border:none;border-radius:6px;z-index:1000;";
+    saveBtn.onclick = () => {
+      document.querySelectorAll(".editable").forEach((el, i) => {
+        localStorage.setItem("editable_" + i, el.innerHTML);
+      });
+      alert("Сохранено в браузере!");
+    };
+    document.body.appendChild(saveBtn);
+
+    document.querySelectorAll(".editable").forEach((el, i) => {
+      const saved = localStorage.getItem("editable_" + i);
+      if (saved) el.innerHTML = saved;
+    });
+  }
+
+  window.onload = () => {
+    document.querySelectorAll(".editable").forEach((el, i) => {
+      const saved = localStorage.getItem("editable_" + i);
+      if (saved) el.innerHTML = saved;
+    });
+  };
+</script>
+</body>
+</html>
