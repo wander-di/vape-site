@@ -411,13 +411,6 @@ saveBtn.onclick = () => {
   alert("Изменения отправлены в Google Таблицу!");
 };
   }
-
-  window.onload = () => {
-    document.querySelectorAll(".editable").forEach((el, i) => {
-      const saved = localStorage.getItem("editable_" + i);
-      if (saved) el.innerHTML = saved;
-    });
-  };
 </script>
 </body>
 </html>
