@@ -413,44 +413,55 @@ saveBtn.onclick = () => {
   }
 </script>
 <script>
-  let isEditing = false;
+  <script>
+const ADMIN_PASSWORD = "admin123"; // ← тут можно сменить пароль
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzv0ypwSrQJiLu4dUq4q_M8w5x3RJ9Xzt235v1zq0e0aAja1VqksfqRDOKzNmbgYZDwPA/exec";
 
-  function makeEditable() {
-    if (!isEditing) {
-      document.querySelectorAll('.editable').forEach(el => {
-        el.contentEditable = true;
-        el.style.border = '1px dashed #aaa';
-        el.style.padding = '2px';
-      });
-      document.getElementById('save-button').style.display = 'inline-block';
-      isEditing = true;
-    }
+let isAdmin = false;
+
+function showAdminLogin() {
+  document.getElementById("adminModal").style.display = "flex";
+}
+
+function checkAdmin() {
+  const pass = document.getElementById("adminPass").value;
+  if (pass === ADMIN_PASSWORD) {
+    isAdmin = true;
+    document.getElementById("adminModal").style.display = "none";
+    enableEditing();
+  } else {
+    document.getElementById("adminError").textContent = "Неверный пароль!";
   }
+}
 
-  function saveChanges() {
-    const content = document.getElementById('content').innerHTML;
-    localStorage.setItem('vapeGuideContent', content);
-    alert('Сохранено!');
-    document.getElementById('save-button').style.display = 'none';
-    document.querySelectorAll('.editable').forEach(el => {
-      el.contentEditable = false;
-      el.style.border = 'none';
-    });
-    isEditing = false;
-  }
-
-  // Подгрузка из localStorage, если есть сохранённый контент
-  window.onload = () => {
-    const saved = localStorage.getItem('vapeGuideContent');
-    if (saved) {
-      document.getElementById('content').innerHTML = saved;
-    }
-  }
-
-  // Временно: двойной клик по заголовку включает редактирование
-  document.addEventListener('dblclick', () => {
-    makeEditable();
+function enableEditing() {
+  document.querySelectorAll(".editable").forEach(el => {
+    el.setAttribute("contenteditable", "true");
   });
+
+  const saveBtn = document.createElement("button");
+  saveBtn.innerText = "Сохранить";
+  saveBtn.style.cssText = "position:fixed;bottom:20px;right:20px;padding:10px;background:#007bff;color:white;border:none;border-radius:6px;z-index:1000;";
+  saveBtn.onclick = () => {
+    const data = {};
+    document.querySelectorAll(".editable").forEach((el, i) => {
+      data["block_" + i] = el.innerHTML;
+    });
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    alert("Изменения отправлены в Google Таблицу!");
+  };
+
+  document.body.appendChild(saveBtn);
+}
 </script>
 
 </body>
