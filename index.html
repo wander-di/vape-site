@@ -1,110 +1,350 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vape & Табак</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гид по вейпам и табаку</title>
   <style>
-    body { font-family: sans-serif; margin: 20px; padding: 0; background: #f5f5f5; }
-    .admin-btn {
-      position: fixed; top: 20px; right: 20px; background: #444; color: #fff;
-      padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;
-      font-weight: bold; z-index: 1000;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
     }
-    .editable {
-      border: 1px dashed transparent;
-      padding: 5px;
-    }
-    .editable[contenteditable="true"] {
-      border: 1px dashed #888;
-      background: #fff8dc;
-    }
-    .section {
-      margin-bottom: 20px;
-      padding: 10px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .save-btn {
-      display: none;
-      margin-top: 10px;
-      padding: 5px 10px;
-      background: #007bff;
+    header {
+      background-color: #3c3f41;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 1rem;
+      text-align: center;
     }
-    .save-btn.show {
-      display: inline-block;
+    #password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+    #content {
+      display: none;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+    nav button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #3c3f41;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    nav button:hover {
+      background-color: #5a5d60;
+    }
+    section {
+      display: none;
+      padding: 1rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      white-space: pre-line;
+    }
+    .flavor-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .flavor-buttons button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #3c3f41;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .flavor-buttons button:hover {
+      background-color: #5a5d60;
+    }
+    .flavor-text {
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
+  <div id="password-screen">
+    <h2>Введите пароль для доступа</h2>
+    <input type="password" id="password" placeholder="Пароль...">
+    <button onclick="checkPassword()">Войти</button>
+    <p id="error-message" style="color: red; display: none;">Неверный пароль</p>
+  </div>
 
-<button class="admin-btn" onclick="enterAdmin()">АДМИН</button>
+  <div id="content">
+    <header>
+      <h1>Гид по вейпам и табаку</h1>
+    </header>
+    <nav>
+      <button onclick="showSection('liquid')">Жидкость</button>
+      <button onclick="showFlavors()">Вкусовые линейки жидкости</button>
+      <button onclick="showSection('devices')">Устройства</button>
+      <button onclick="showSection('disposable')">Одноразовые</button>
+      <button onclick="showSection('reusable')">Многоразовые</button>
+      <button onclick="showSection('mods')">Моды</button>
+      <button onclick="showSection('atomizers')">Атомайзеры</button>
+      <button onclick="showSection('consumables')">Расходники</button>
+      <button onclick="showSection('important')">ВАЖНО</button>
+      <button onclick="showSection('hookahs')">Кальяны</button>
+      <button onclick="showSection('bowls')">Чаши</button>
+      <button onclick="showSection('mixes')">Смеси и угли</button>
+      <button onclick="showSection('tobacco')">Табак</button>
+      <button onclick="showSection('pipes')">Трубки и самокрутки</button>
+      <button onclick="showSection('cigars')">Сигары и сигариллы</button>
+    </nav>
 
-<div id="content"></div>
+    <section id="liquid" class="active">
+  <h2>Жидкость</h2>
+  <p><strong>Общая информация:</strong></p>
+  <p><strong>Состав жидкости:</strong> глицерин (далее VG), пропиленгликоль (далее PG), никотин, ароматизация.</p>
+  <p><strong>VG или глицерин</strong> в жидкости выполняет функцию доставки ароматизации и никотина в организм человека. Чем больше в жидкости глицерина в процентном соотношении, тем более «дымной» (больше пара) будет жидкость.</p>
+  <p><strong>PG или пропиленгликоль</strong> является связующим звеном между глицерином и ароматизацией с никотином. Чем больше пропиленгликоля в жидкости в процентном соотношении, тем больше производитель может добавить в жидкость никотина и ароматизации.</p>
+  <p><strong>Никотин, который используется в жидкостях:</strong></p>
+  <ul>
+    <li><strong>Щелочной (classic, freebase)</strong> – отличается более высоким уровнем кислотности (pH), из-за чего обладает более выраженным ударом по горлу (throat hit или ТХ). Он медленнее всасывается в кровь, и эффект насыщения никотином наступает примерно через 15-20 секунд после первой затяжки. Также медленнее выводится из организма, создавая накопительный эффект при активном парении.</li>
+    <li><strong>Солевой (salt)</strong> – быстрее попадает в кровь и быстрее выводится из нее. Обладает менее выраженным ТХ, что позволяет поднимать его концентрацию (крепость) до более высоких значений.</li>
+  </ul>
+  <p><strong>Заключение:</strong> при равных дозировках обоих видов никотина Classic будет обладать более выраженным ТХ и давать более выраженный вкус никотина в жидкости, как при более высоких концентрациях Salt никотина.</p>
+  
+  <p><strong>Соотношение и дозировки:</strong></p>
+  <p><strong>Солевые жидкости:</strong> (50Vg/50Pg, 60Vg/40Pg). Используется преимущественно на Pod-системах на мощности до 40W.</p>
+  <p><strong>Содержание никотина:</strong> 0мг, 12мг, 20мг и все, что с подписью strong, hard, ultra (выше 20мг, примерно 40-50 мг и т.д.).</p>
+  
+  <p><strong>Щелочные жидкости:</strong> (70Vg/30Pg, 75Vg/25Pg, 80Vg/20Pg, max VG, реже 50Vg/50Pg, 60Vg/40Pg). Используется преимущественно на Pod-mod устройствах и Бокс-модах при мощности от 40W и выше.</p>
+  <p><strong>Содержание никотина:</strong> наиболее распространенные 0мг, 3мг, 6мг, 12мг, 18мг.</p>
+</section>
+    </section>
+    <section id="devices">
+      <h2>Устройства</h2>
+      <p><p><strong>Одноразовые устройства</strong>
+Это самые простые устройства в мире вейпинга, без исключений. Каждая одноразовая система поставляется сразу готовой к работе из коробки.
+Существует 3 вида одноразок:
+1.	Без подзарядки: все устройства до 3500затяжек. Работают, пока не сядет аккумулятор(разрядится)
+Исключение: 
+2.	С подзарядкой: все устройства от 3500 затяжек. Заряжаться могут бесконечно, перестанет работать, когда в ней закончится жидкость. Обязательные условия зарядки: слабо мощный источник питания до 1,5А, не более 20-30мин за один раз.
+3. Со сменными картриджами: отдельно блок(устройство), предзаправленные картриджи на определенное кол-во затяжек. Перестает работать, когда в картридже заканчивается жидкость. Обязательные условия зарядки: слабо мощный источник питания до 1,5А, без картриджа.
+•	HQD LUX – в комплекте идет устройство(девайс) и 2 картриджа на 1500затяжек, далее картриджи продаются поштучно.
+•	Lost Mary Psyper – отдельно приобретается устройство(девайс), отдельно картридж на 2500затяжек и 5500затяжек.
+•	Elf Bar Low It - отдельно приобретается устройство(девайс), отдельно картридж на 5500затяжек.
+•	HQD Click – в комплекте устройство и картридж на 5500затяжек.
+•	Lost Mary CD10000 - в комплекте устройство и картридж на 10000затяжек.
+</p>
+    </section>
+    <section id="disposable">
+      <h2>Одноразовые устройства</h2>
+      <p>Устройства, не подлежащие заправке...</p>
+    </section>
+    <section id="reusable">
+      <h2>Многоразовые устройства</h2>
+      <p>Устройства с возможностью заправки...</p>
+    </section>
+    <section id="mods">
+      <h2>Моды</h2>
+      <p>Описание модов, для продвинутых пользователей...</p>
+    </section>
+    <section id="atomizers">
+      <h2>Виды атомайзеров</h2>
+      <p>RDA, RTA и другие виды...</p>
+    </section>
+    <section id="consumables">
+      <h2>Расходники</h2>
+      <p>О хлопке, койлах, сетках...</p>
+    </section>
+    <section id="important">
+      <h2>ВАЖНАЯ ИНФОРМАЦИЯ</h2>
+      <p>Важные советы и правила безопасности...</p>
+    </section>
+    <section id="hookahs">
+      <h2>Кальяны и комплектующие</h2>
+      <p>Коротко об устройстве кальяна, шлангах, колбах...</p>
+    </section>
+    <section id="bowls">
+      <h2>Чаши и формы чаш</h2>
+      <p>Формы чаш: турка, классика, фанел...</p>
+    </section>
+    <section id="mixes">
+      <h2>Смеси и угли</h2>
+      <p>Разновидности табачных и бестабачных смесей, типы угля...</p>
+    </section>
+    <section id="tobacco">
+      <h2>Всё о табаках</h2>
+      <p>Сорта, крепость, нарезка и их особенности...</p>
+    </section>
+    <section id="pipes">
+      <h2>Трубки и самокрутки</h2>
+      <p>Разновидности трубок, материалы, мундштуки, бумага...</p>
+    </section>
+    <section id="cigars">
+      <h2>Сигары и сигариллы</h2>
+      <p>Виды, особенности, отличия от сигарет...</p>
+    </section>
+    <section id="flavors" style="display: none;">
+      <h2>Вкусовые линейки жидкости</h2>
+      <div class="flavor-buttons">
+        <button onclick="showFlavor('maxwells')">Maxwells</button>
+        <button onclick="showFlavor('smokeKitchen')">Smoke Kitchen</button>
+        <button onclick="showFlavor('Content')">Content</button>
+        <button onclick="showFlavor('Siberian и Scandalist')">Siberian и Scandalist</button>
+        <button onclick="showFlavor('Табачные жидкости')">Табачные жидкости</button>
+      </div>
+    </section>
+    <section id="maxwells" style="display: none;" class="flavor-text">
+      <h2>Maxwells</h2>
+      <p> <ul>
+    <p><p><strong>Pink</strong> – Малиновый лимонад</li>
+    <p><p><strong>Shoria</strong> – Хвоя, мята, лесные ягоды</li>
+    <p><p><strong>Shoria Summer</strong> – Мятный ананасовый джем</li>
+    <p><p><strong>Pops</strong> – Жвачка киви и яблоко</li>
+    <p><p><strong>Black</strong> – Терпкий табак</li>
+    <p><p><strong>Rich</strong> – Дыня, арбуз и клубничный джем</li>
+    <p><p><strong>Altay</strong> – Черный чай со смородиновым вареньем</li>
+    <p><p><strong>Blue</strong> – Черника, голубика, ежевика с холодком<</li>
+    <p><p><strong>Arizona</strong> – Клубника, огурец, базилик</li>
+    <p><p><strong>Mojito</strong> – Освежающий мохито</li>
+    <p><p><strong>Chill</strong> – Прохладный арбузный лимонад</button></li>
+    <p><p><strong>Jelly</strong> – Ягодный мармелад</button></li>
+    <p><p><strong>Vera</strong> – Огуречный лимонад с алоэ вера</li>
+    <p><p><strong>Red</strong> – Ядерная клубника</li>
+    <p><p><strong>Apple Pie</strong> – Шарлотка с нотками корицы</li>
+    <p><p><strong>Cherry Punch</strong> – Пунш из вишни</li>
+    <p><p><strong>Lemon Cake</strong> – Лимонный чизкейк</li>
+    <p><p><strong>Mango</strong> – Тропический манго</li>
+    <p><p><strong>Tundra</strong> – Можжевельник, мята, рябина</li>
+    <p><p><strong>Split</strong> – Банан, кокос</li>
+    <p><p><strong>Tropic</strong> – Ананас, киви, манго</li>
+    <p><p><strong>Green</strong> – Зеленое яблоко</li>
+    <p><p><strong>Baikal</strong> – Травянистая кола</li>
+    <p><p><strong>India</strong> – Зеленый чай с лесными ягодами</li>
+  </ul></p>
+    </section>
+    <section id="smokeKitchen" style="display: none;" class="flavor-text">
+      <h2>Smoke Kitchen</h2>
+      <p><h4>TRIX:</h4>
+  <p><strong>Соль</strong>: 20мг, 20Ultra.</p>
+  <p><strong>Щелочь</strong>: 0мг, 3мг.</p>
+  <ul>
+    <p><p><strong>CIDER</strong> – Грушевый сидр</li>
+    <p><p><strong>PANCAKE</strong> – Блины с медом</li>
+    <p><p><strong>CITRUS</strong> – Табак с цитрусами</li>
+    <p><p><strong>CREAMY CLOUDS</strong> – Сливочный мандарин с ванилью</li>
+    <p><p><strong>TRIX.WORLD</strong> – Ягодный сорбет, цитрусы</li>
+    <p><p><strong>GLINTWINE</strong> – Глинтвейн со специями</li>
+    <p><p><strong>ALASKA BEAR</strong> – Табак, орех</li>
+  </ul></p>
+    </section>
+    <section id="Content" style="display: none;" class="flavor-text">
+      <h2>Content</h2>
+      <p><p><strong>Соль</strong>: 20мг, 20Ultra.</p>
+  <ul>
+    <p><p><strong>XXX-FILES</strong> – Гуава, малина</li>
+    <p><p><strong>WHITE MIRROR</strong> – Ягодные леденцы с анисом и ментолом</li>
+    <p><p><strong>REDRUM</strong> – Гранат, малина и черная смородина</li>
+    <p><p><strong>Q-THEORY</strong> – Вишня, черная смородина</li>
+    <p><p><strong>OOH WEE FORMULA</strong> – Груша, крем-сода</li>
+    <p><p><strong>LET’S ROCK</strong> – Цитрусовый лимонад с ягодами</li>
+    <p><p><strong>FROOPYLAND ADVENTURE</strong> – Фрукты, абсент, ментол</li>
+    <p><p><strong>DR.WOW</strong> – Йогурт с манго и индийскими прянностями</li>
+  </ul></p>
+    </section>
+    <section id="Siberian и Scandalist" style="display: none;" class="flavor-text">
+      <h2>Siberian и Scandalist</h2>
+      <p><p><strong>Siberian</strong>
+Соль: 20мг, 20Ultra
+	<p><p><strong>Woodman’s Pipe</strong> –табак, орех</li>
+	<p><p><strong>Wild Berry</strong> –лесные ягоды с можжевельником и хвоей</li>
+	<p><p><strong>Pine Nut Cake</strong> –кедровый кекс</li>
+	<p><p><strong>Mountain Taiga</strong> –черная смородина, хвоя</li>
+	<p><p><strong>Dog Rose & Fruits</strong> –фрукты с шиповником</li>
 
-<script>
-const API_URL = "https://script.google.com/macros/s/AKfycbzv0ypwSrQJiLu4dUq4q_M8w5x3RJ9Xzt235v1zq0e0aAja1VqksfqRDOKzNmbgYZDwPA/exec";
-const ADMIN_PASSWORD = "admin123";
-let isAdmin = false;
+<p><p><strong>Scandalist</strong>
+Жидкость имеет более 20 вкусов.
+Соль: 20мг (имеет выраженный ТХ, курится крепче)
+Щелочь: 3мг, 60мл.
+	<p><p><strong>MANTRA Tropical Smoothie</strong> – манго, питайя (драгон фрукт), клубника, цитрус</li>
+	<p><p><strong>Doomsday Machine Tropical Apocalypse</strong> – гуава, маракуйя, цитрусы</li>
+	<p><p><strong>Boy Oh Boy Bloody Red Bubblegum</strong> – жвачка клубника, малина</li>
+	<p><p><strong>EX’s Heart Juice Bubblegum</strong> – жвачка киви, малина</li>
+	<p><p><strong>Wolf Cabin Taiga Juice</strong> – Брусника, смородина, хвоя</li>
+	<p><p><strong>Фьюжн</strong> – клубника, маракуйя, киви</li>
+</p>
+    </section>
+    <section id="Табачные жидкости" style="display: none;" class="flavor-text">
+      <h2>Табачные жидкости</h2>
+      <p><p><strong>Barrel</strong>
+Соль: 20мг, 20strong
+Щелочь: 6мг, 12мг – 60мл. 50/50
+	<p><p><strong>BLOODYCHERRR</strong> –вишня;
+	<p><p><strong>PIRATE SUGAR</strong> – карамель;
+	<p><p><strong>MR. DAMSON</strong> – чернослив;
+	<p><p><strong>RICH BLEND</strong> – ром.
 
-async function loadContent() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
-  const content = document.getElementById("content");
-  content.innerHTML = "";
+<p><p><strong>Tradewinds Tobacco</strong>
+Соль: 20мг, 20ice.
+Щелочь: 3мг, 6мг, 12мг – 60мл. 50/50
+	<p><p><strong>Cameroon</strong> – корица;
+	<p><p><strong>Carolina</strong> – крепкий трубочный;
+	<p><p><strong>Carolina Cool</strong> – Ментол и мята;
+	<p><p><strong>Havana</strong> – кубинская сигара;
+	<p><p><strong>Laplandia</strong> – шоколад, карамель;
+	<p><p><strong>Scandinavian Cured</strong> – мед;
+	<p><p><strong>Turkish</strong> – дубовая кора;
+	<p><p><strong>Tuscan Grape</strong> – виноград;
+	<p><p><strong>Kentucky</strong> – натуральный;
+	<p><p><strong>Texas</strong> – крепкий;
+	<p><p><strong>Tennessee</strong> – кофе.
+</p>
+    </section>
+  </div>
 
-  data.forEach((item, index) => {
-    const section = document.createElement("div");
-    section.className = "section";
+  <script>
+    const correctPassword = "valera123";
 
-    const text = document.createElement("div");
-    text.className = "editable";
-    text.innerText = item.text;
-    if (isAdmin) text.setAttribute("contenteditable", "true");
+    function checkPassword() {
+      const entered = document.getElementById('password').value;
+      if (entered === correctPassword) {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        document.getElementById('error-message').style.display = 'block';
+      }
+    }
 
-    const saveBtn = document.createElement("button");
-    saveBtn.className = "save-btn";
-    saveBtn.innerText = "Сохранить";
-    saveBtn.onclick = () => saveChanges(item.id, text.innerText, saveBtn);
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
 
-    if (isAdmin) saveBtn.classList.add("show");
+    function showFlavors() {
+      document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+      document.getElementById('flavors').style.display = 'block';
+    }
 
-    section.appendChild(text);
-    section.appendChild(saveBtn);
-    content.appendChild(section);
-  });
-}
-
-async function saveChanges(id, newText, btn) {
-  btn.innerText = "Сохраняю...";
-  const response = await fetch(API_URL, {
-    method: "POST",
-    body: JSON.stringify({ id: id, text: newText }),
-    headers: { "Content-Type": "application/json" }
-  });
-  const result = await response.text();
-  btn.innerText = result === "OK" ? "Сохранено!" : "Ошибка";
-  setTimeout(() => btn.innerText = "Сохранить", 2000);
-}
-
-function enterAdmin() {
-  const pass = prompt("Введите пароль администратора:");
-  if (pass === ADMIN_PASSWORD) {
-    isAdmin = true;
-    loadContent();
-  } else {
-    alert("Неверный пароль!");
-  }
-}
-
-window.onload = loadContent;
-</script>
-
+    function showFlavor(id) {
+      document.querySelectorAll('.flavor-text').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
