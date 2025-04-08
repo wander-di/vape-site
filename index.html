@@ -412,6 +412,47 @@ saveBtn.onclick = () => {
 };
   }
 </script>
+<script>
+  let isEditing = false;
+
+  function makeEditable() {
+    if (!isEditing) {
+      document.querySelectorAll('.editable').forEach(el => {
+        el.contentEditable = true;
+        el.style.border = '1px dashed #aaa';
+        el.style.padding = '2px';
+      });
+      document.getElementById('save-button').style.display = 'inline-block';
+      isEditing = true;
+    }
+  }
+
+  function saveChanges() {
+    const content = document.getElementById('content').innerHTML;
+    localStorage.setItem('vapeGuideContent', content);
+    alert('Сохранено!');
+    document.getElementById('save-button').style.display = 'none';
+    document.querySelectorAll('.editable').forEach(el => {
+      el.contentEditable = false;
+      el.style.border = 'none';
+    });
+    isEditing = false;
+  }
+
+  // Подгрузка из localStorage, если есть сохранённый контент
+  window.onload = () => {
+    const saved = localStorage.getItem('vapeGuideContent');
+    if (saved) {
+      document.getElementById('content').innerHTML = saved;
+    }
+  }
+
+  // Временно: двойной клик по заголовку включает редактирование
+  document.addEventListener('dblclick', () => {
+    makeEditable();
+  });
+</script>
+
 </body>
 	<div style="text-align:center; margin: 1rem;">
   <button id="save-button" style="padding: 0.5rem 1rem; font-size: 1rem; display: none;" onclick="saveChanges()">Сохранить</button>
