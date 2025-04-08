@@ -363,7 +363,7 @@
     <div id="adminError" style="color:red; margin-top:10px;"></div>
   </div>
 </div>
-</body>
+
 <script>
   const ADMIN_PASSWORD = "admin123";
   let isAdmin = false;
@@ -411,61 +411,13 @@ saveBtn.onclick = () => {
   alert("Изменения отправлены в Google Таблицу!");
 };
   }
-</script>
-<script>
-  <script>
-const ADMIN_PASSWORD = "admin123"; // ← тут можно сменить пароль
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzv0ypwSrQJiLu4dUq4q_M8w5x3RJ9Xzt235v1zq0e0aAja1VqksfqRDOKzNmbgYZDwPA/exec";
 
-let isAdmin = false;
-
-function showAdminLogin() {
-  document.getElementById("adminModal").style.display = "flex";
-}
-
-function checkAdmin() {
-  const pass = document.getElementById("adminPass").value;
-  if (pass === ADMIN_PASSWORD) {
-    isAdmin = true;
-    document.getElementById("adminModal").style.display = "none";
-    enableEditing();
-  } else {
-    document.getElementById("adminError").textContent = "Неверный пароль!";
-  }
-}
-
-function enableEditing() {
-  document.querySelectorAll(".editable").forEach(el => {
-    el.setAttribute("contenteditable", "true");
-  });
-
-  const saveBtn = document.createElement("button");
-  saveBtn.innerText = "Сохранить";
-  saveBtn.style.cssText = "position:fixed;bottom:20px;right:20px;padding:10px;background:#007bff;color:white;border:none;border-radius:6px;z-index:1000;";
-  saveBtn.onclick = () => {
-    const data = {};
+  window.onload = () => {
     document.querySelectorAll(".editable").forEach((el, i) => {
-      data["block_" + i] = el.innerHTML;
+      const saved = localStorage.getItem("editable_" + i);
+      if (saved) el.innerHTML = saved;
     });
-
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    alert("Изменения отправлены в Google Таблицу!");
   };
-
-  document.body.appendChild(saveBtn);
-}
 </script>
-
 </body>
-	<div style="text-align:center; margin: 1rem;">
-  <button id="save-button" style="padding: 0.5rem 1rem; font-size: 1rem; display: none;" onclick="saveChanges()">Сохранить</button>
-</div>
 </html>
