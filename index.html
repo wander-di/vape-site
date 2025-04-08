@@ -391,18 +391,25 @@
     const saveBtn = document.createElement("button");
     saveBtn.innerText = "Сохранить";
     saveBtn.style.cssText = "position:fixed;bottom:20px;right:20px;padding:10px;background:#007bff;color:white;border:none;border-radius:6px;z-index:1000;";
-    saveBtn.onclick = () => {
-      document.querySelectorAll(".editable").forEach((el, i) => {
-        localStorage.setItem("editable_" + i, el.innerHTML);
-      });
-      alert("Сохранено в браузере!");
-    };
-    document.body.appendChild(saveBtn);
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzv0ypwSrQJiLu4dUq4q_M8w5x3RJ9Xzt235v1zq0e0aAja1VqksfqRDOKzNmbgYZDwPA/exec";
 
-    document.querySelectorAll(".editable").forEach((el, i) => {
-      const saved = localStorage.getItem("editable_" + i);
-      if (saved) el.innerHTML = saved;
-    });
+saveBtn.onclick = () => {
+  const data = {};
+  document.querySelectorAll(".editable").forEach((el, i) => {
+    data["block_" + i] = el.innerHTML;
+  });
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  alert("Изменения отправлены в Google Таблицу!");
+};
   }
 
   window.onload = () => {
